@@ -1,6 +1,5 @@
 package ui;
 
-<<<<<<< HEAD
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -23,8 +22,4 @@ public class Main extends Application{
 			e.printStackTrace();
 		}
 	}
-=======
-public class Main {
-
->>>>>>> e13796129ea0a6b43a76f74387ae41cdc23a1bff
 }
