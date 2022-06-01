@@ -53,7 +53,6 @@ public class Graph<T> {
 			u.BFS(q);
 			u.setColor("BLACK");
 		}
-		
 	}
 	
 	public Vertex<T> getVertex(T e){

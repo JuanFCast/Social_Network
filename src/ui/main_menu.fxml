@@ -13,11 +13,11 @@
    <children>
       <Pane prefHeight="457.0" prefWidth="653.0" style="-fx-background-color: white;">
          <children>
-            <TextField layoutX="436.0" layoutY="197.0" prefHeight="31.0" prefWidth="223.0" promptText="USERNAME">
+            <TextField fx:id="username_txtField" layoutX="436.0" layoutY="197.0" prefHeight="31.0" prefWidth="223.0" promptText="USERNAME">
                <font>
                   <Font size="15.0" />
                </font></TextField>
-            <Button layoutX="436.0" layoutY="286.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="223.0" style="-fx-background-color: #68C7FD;" text="LOGIN" textFill="#403f3f">
+            <Button layoutX="436.0" layoutY="286.0" mnemonicParsing="false" onAction="#login" prefHeight="32.0" prefWidth="223.0" style="-fx-background-color: #68C7FD;" text="LOGIN" textFill="#403f3f">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -32,7 +32,7 @@
                   <Image url="@../../media/netLogo.png" />
                </image>
             </ImageView>
-            <PasswordField layoutX="436.0" layoutY="235.0" prefHeight="31.0" prefWidth="223.0" promptText="PASSWORD">
+            <PasswordField fx:id="password_passField" layoutX="436.0" layoutY="235.0" prefHeight="31.0" prefWidth="223.0" promptText="PASSWORD">
                <font>
                   <Font size="15.0" />
                </font>
