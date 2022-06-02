@@ -1,7 +1,6 @@
 package ui;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 import javafx.event.ActionEvent;
@@ -107,6 +106,7 @@ public class ProfileMenuGUI {
 			addToFriend_bttn.setVisible(false);
 		}
     	
+		contacts_listView.getItems().clear();
     	name_label.setText(currentProfile.getUserName());
     	if(l.isEmpty() == false) {
     		contacts_listView.getItems().addAll(l);

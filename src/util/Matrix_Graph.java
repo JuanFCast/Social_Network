@@ -2,7 +2,7 @@ package util;
 
 import java.util.HashMap;
 
-public class Matriz_Graph<T> {
+public class Matrix_Graph<T> {
 	
 	//Basado en el codigo presentado en este video: https://www.youtube.com/watch?v=kAP8qlzZbeY
 
@@ -11,7 +11,7 @@ public class Matriz_Graph<T> {
 	private int edges;
 	private int adjMatrix[][];
 	
-	public Matriz_Graph() {
+	public Matrix_Graph() {
 		vertices = new HashMap<>();
 		edges = 0;
 		adjMatrix = new int[MAX_VERTEX][MAX_VERTEX];

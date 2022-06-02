@@ -71,7 +71,6 @@ public class SocialNetwork {
 	}
 	
 	public List<Person> getContacts(Person p){
-		System.out.println("Soy p: " + p);
 		List<Person> l = network.getVertex(p).getAdj();
 		
 		return l;
