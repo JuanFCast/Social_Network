@@ -14,7 +14,7 @@
    <children>
       <Pane prefHeight="457.0" prefWidth="653.0" style="-fx-background-color: white;">
          <children>
-            <TextField layoutX="282.0" layoutY="127.0" prefHeight="31.0" prefWidth="223.0" promptText="Username">
+            <TextField fx:id="username_txtField" layoutX="282.0" layoutY="127.0" prefHeight="31.0" prefWidth="223.0" promptText="*Username">
                <font>
                   <Font size="15.0" />
                </font></TextField>
@@ -23,22 +23,22 @@
                   <Image url="@../../media/network.jpg" />
                </image>
             </ImageView>
-            <PasswordField layoutX="282.0" layoutY="203.0" prefHeight="31.0" prefWidth="223.0" promptText="Password">
+            <PasswordField fx:id="password_passField" layoutX="282.0" layoutY="203.0" prefHeight="31.0" prefWidth="223.0" promptText="*Password">
                <font>
                   <Font size="15.0" />
                </font>
             </PasswordField>
-            <Button layoutX="282.0" layoutY="292.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="223.0" style="-fx-background-color: #68C7FD;" text="SIGN UP" textFill="#434343">
+            <Button layoutX="282.0" layoutY="292.0" mnemonicParsing="false" onAction="#signUp" prefHeight="32.0" prefWidth="223.0" style="-fx-background-color: #68C7FD;" text="SIGN UP" textFill="#434343">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <TextField layoutX="282.0" layoutY="165.0" prefHeight="31.0" prefWidth="223.0" promptText="Email">
+            <TextField fx:id="email_txtField" layoutX="282.0" layoutY="165.0" prefHeight="31.0" prefWidth="223.0" promptText="*Email">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-            <PasswordField layoutX="282.0" layoutY="241.0" prefHeight="31.0" prefWidth="223.0" promptText="Confirm Password">
+            <PasswordField fx:id="confirmPassword_passField" layoutX="282.0" layoutY="241.0" prefHeight="31.0" prefWidth="223.0" promptText="*Confirm Password">
                <font>
                   <Font size="15.0" />
                </font>
@@ -48,7 +48,7 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <Button layoutX="282.0" layoutY="336.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="223.0" style="-fx-background-color: #68C7FD;" text="LOGIN" textFill="#434343">
+            <Button layoutX="282.0" layoutY="336.0" mnemonicParsing="false" onAction="#loginMenu" prefHeight="32.0" prefWidth="223.0" style="-fx-background-color: #68C7FD;" text="LOGIN" textFill="#434343">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
