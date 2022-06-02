@@ -5,8 +5,8 @@ import java.util.Comparator;
 import java.util.List;
 
 public class AVL<E> implements ABB<E>{
-
-    private Node<E> root;
+	
+	private Node<E> root;
     private Comparator<E> comparator;
     
     public AVL(Comparator<E> c){
@@ -61,13 +61,18 @@ public class AVL<E> implements ABB<E>{
 		if(root == null) {
 			return null;
 		}else {
-			return search(root, s).getElement();
+			Node<E> p = search(root, s);
+			if(p != null) {
+				return p.getElement();
+			} else {
+				return null;
+			}
 		}
 	}
 
 	@Override
 	public Node<E> search(Node<E> r, E s) {
-		if(r.getElement()==null) {
+		if(r == null) {
 			return r;
 		}else if(comparator.compare(s, r.getElement())==0) {
 			return r;

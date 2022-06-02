@@ -1,11 +1,13 @@
 package util;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
-public class Vertex<T> {
+public class Vertex<T> implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private T element;
 	private String color;
 	private double distance;
@@ -31,11 +33,25 @@ public class Vertex<T> {
 	
 	//Getters & Setters
 	@SuppressWarnings("unchecked")
-	public List<Vertex<T>> getAdj(){
+	public List<Vertex<T>> getAdjV(){
 		List<Vertex<T>> l =  new ArrayList<>();
 		
 		for (Edge edge : adj) {
 			l.add((Vertex<T>) edge.getAdj(this));
+		}
+		
+		return l;
+	}
+	
+	public List<T> getAdj(){
+		List<T> l =  new ArrayList<>();
+		
+		for (Edge edge : adj) {
+			@SuppressWarnings("unchecked")
+			Vertex<T> v = (Vertex<T>) edge.getAdj(this);
+			if(v != null) {
+				l.add(v.getElement());
+			}
 		}
 		
 		return l;
@@ -65,6 +81,9 @@ public class Vertex<T> {
 	}
 	public T getElement() {
 		return element;
+	}
+	public List<Edge> getAdjE() {
+		return adj;
 	}
 	
 	public void setColor(String c) {

@@ -1,6 +1,7 @@
 package ui;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -32,7 +33,7 @@ public class SocialNetworkGUI {
 		
 		if(person != null) {
 			if(person.getPassword().equals(p)) {
-				profileMenu();
+				profileMenu(person);
 			} else {
 				JOptionPane.showMessageDialog(null, "Incorrect Password");
 			}
@@ -55,6 +56,18 @@ public class SocialNetworkGUI {
 		}
 	}
 	
+	public List<Person> listContains(String s){
+		return network.getListContains(s);
+	}
+	
+	public List<Person> listContacts(Person p){
+		return network.getContacts(p);
+	}
+	
+	public boolean addFriend(Person p, Person p2) {
+		return network.makeARelation(p, p2);
+	}
+	
 	//Menu´s start
 	public void mainMenu() throws IOException {
 		controllerMainMenu.start();
@@ -62,8 +75,8 @@ public class SocialNetworkGUI {
 	public void signUpMenu() throws IOException {
 		controllerSignUpMenu.start();
 	}
-	public void profileMenu() throws IOException {
-		controllerProfileMenu.start();
+	public void profileMenu(Person p) throws IOException {
+		controllerProfileMenu.start(p);
 	}
 	
 }

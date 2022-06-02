@@ -1,7 +1,10 @@
 package util;
 
-public class Edge {
+import java.io.Serializable;
 
+public class Edge implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	private Vertex<?> v1;
 	private Vertex<?> v2;
 	private Integer weight;

@@ -7,7 +7,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 import util.AVL;
 import util.Graph;
@@ -15,7 +17,7 @@ import util.Graph;
 public class SocialNetwork {
 
 	private final String PATH_FOR_AVL = "data/usersForAVL.ced";
-	private final String PATH_FOR_GRAPH = "data/usersForGraph.ced"; 
+	private final String PATH_FOR_GRAPH = "data/usersForGraph.ced";
 	private AVL<Person> usersbyEmail;
 	private Graph<Person> network;
 	
@@ -30,8 +32,6 @@ public class SocialNetwork {
 		
 		try {
 			loadData();
-		} catch (ClassNotFoundException | IOException e) {
-			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -49,9 +49,33 @@ public class SocialNetwork {
 		}
 	}
 	
+	public boolean makeARelation(Person p, Person p2) {
+		return network.insertAdj(network.getVertex(p), network.getVertex(p2), 1);
+	}
+	
 	public Person searchRegister(Person p) {
-		return usersbyEmail.search(p);
-	} 
+		Person pc = usersbyEmail.search(p);
+		return (pc != null)?pc:null;
+	}
+	
+	public List<Person> getListContains(String s) {
+		List<Person> l = new ArrayList<>();
+		List<Person> a = usersbyEmail.searchList();
+		for (Person person : a) {
+			if(person.getUserName().contains(s)) {
+				l.add(person);
+			}
+		}
+		
+		return l;
+	}
+	
+	public List<Person> getContacts(Person p){
+		System.out.println("Soy p: " + p);
+		List<Person> l = network.getVertex(p).getAdj();
+		
+		return l;
+	}
 	
 	private void loadData() throws ClassNotFoundException, IOException, Exception{
 		if(loadDataForAVL() && loadDataForGraph()) {
@@ -75,7 +99,10 @@ public class SocialNetwork {
 		File fileAVL = new File(PATH_FOR_AVL);		
 		if(fileAVL.exists()) {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileAVL));
-			usersbyEmail = (AVL<Person>) ois.readObject();
+			List<Person> l = (List<Person>) ois.readObject();
+			for (Person person : l) {
+				usersbyEmail.add(person);
+			}
 			ois.close();
 			return true;
 		}
@@ -99,7 +126,7 @@ public class SocialNetwork {
 	
 	private void saveDataForAVL() throws FileNotFoundException, IOException {
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(PATH_FOR_AVL));
-		oos.writeObject(usersbyEmail);
+		oos.writeObject(usersbyEmail.searchList());
 		oos.close();
 	}
 	

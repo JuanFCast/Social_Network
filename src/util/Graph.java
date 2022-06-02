@@ -1,12 +1,16 @@
 package util;
 
+import java.io.Serializable;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class Graph<T> {
+public class Graph<T> implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	private HashMap<T, Vertex<T>> vertices;
 	private PriorityQueue<Edge> edges;
 	
@@ -53,6 +57,29 @@ public class Graph<T> {
 			u.BFS(q);
 			u.setColor("BLACK");
 		}
+	}
+	
+	public int dijkstra(Vertex<T> s, Vertex<T> to) {
+		Integer d = Integer.MAX_VALUE;
+		PriorityQueue<Vertex<T>> q = new PriorityQueue<>(new Comparator<Vertex<T>>() {
+			@Override
+			public int compare(Vertex<T> o1, Vertex<T> o2) {
+				if(o1.distance() > o2.distance()) {
+					return 1;
+				} else if(o1.distance() < o2.distance()) {
+					return -1;
+				} else {
+					return 0;
+				}
+			}
+		});
+
+		
+		
+		q.add(s);
+		
+		
+		return d;
 	}
 	
 	public Vertex<T> getVertex(T e){

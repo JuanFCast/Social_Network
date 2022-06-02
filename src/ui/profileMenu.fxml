@@ -22,12 +22,12 @@
       </Pane>
       <Pane layoutX="121.0" prefHeight="40.0" prefWidth="475.0" style="-fx-background-color: #52B5ED;">
          <children>
-            <TextField layoutX="13.0" layoutY="5.0" prefHeight="31.0" prefWidth="225.0">
+            <TextField fx:id="search_txtField" layoutX="13.0" layoutY="5.0" prefHeight="31.0" prefWidth="225.0">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-            <Button layoutX="245.0" layoutY="1.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="42.0" style="-fx-border-color: white; -fx-background-color: #52B5ED;">
+            <Button layoutX="245.0" layoutY="1.0" mnemonicParsing="false" onAction="#search" prefHeight="38.0" prefWidth="42.0" style="-fx-border-color: white; -fx-background-color: #52B5ED;">
                <graphic>
                   <ImageView fitHeight="19.0" fitWidth="24.0" pickOnBounds="true">
                      <image>
@@ -36,7 +36,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="433.0" layoutY="2.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="42.0" style="-fx-border-color: white; -fx-background-color: #52B5ED;">
+            <Button layoutX="433.0" layoutY="1.0" mnemonicParsing="false" onAction="#logout" prefHeight="38.0" prefWidth="42.0" style="-fx-border-color: white; -fx-background-color: #52B5ED;">
                <graphic>
                   <ImageView fitHeight="19.0" fitWidth="24.0" pickOnBounds="true">
                      <image>
@@ -45,7 +45,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="393.0" layoutY="2.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="42.0" style="-fx-border-color: white; -fx-background-color: #52B5ED;">
+            <Button layoutX="393.0" layoutY="1.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="42.0" style="-fx-border-color: white; -fx-background-color: #52B5ED;">
                <graphic>
                   <ImageView fitHeight="19.0" fitWidth="24.0" pickOnBounds="true">
                      <image>
@@ -54,19 +54,36 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Button layoutX="352.0" layoutY="1.0" mnemonicParsing="false" onAction="#goHome" prefHeight="38.0" prefWidth="42.0" style="-fx-border-color: white; -fx-background-color: #52B5ED;">
+               <graphic>
+                  <ImageView fitHeight="19.0" fitWidth="24.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../media/home_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </Pane>
-      <Pane layoutX="121.0" layoutY="40.0" prefHeight="560.0" prefWidth="286.0" style="-fx-background-color: white;" />
-      <Label layoutX="6.0" layoutY="122.0" prefHeight="35.0" prefWidth="112.0" text="NAME" textFill="WHITE">
+      <Pane layoutX="121.0" layoutY="40.0" prefHeight="560.0" prefWidth="286.0" style="-fx-background-color: white;">
+         <children>
+            <ListView fx:id="search_listView" layoutX="14.0" layoutY="-7.0" onMouseClicked="#readValue" prefHeight="212.0" prefWidth="225.0" visible="false" />
+         </children></Pane>
+      <Label fx:id="name_label" alignment="CENTER" layoutX="6.0" layoutY="122.0" prefHeight="35.0" prefWidth="112.0" text="NAME" textFill="WHITE">
          <font>
-            <Font size="13.0" />
+            <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <ListView layoutX="411.0" layoutY="170.0" prefHeight="426.0" prefWidth="181.0" />
+      <ListView fx:id="contacts_listView" layoutX="411.0" layoutY="170.0" prefHeight="426.0" prefWidth="181.0" />
       <Label alignment="CENTER" layoutX="410.0" layoutY="135.0" prefHeight="35.0" prefWidth="181.0" style="-fx-border-color: #074365; -fx-background-color: white;" text="CONTACTS">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
+      <Button fx:id="addToFriend_bttn" layoutX="4.0" layoutY="158.0" mnemonicParsing="false" onAction="#AddFriend" prefHeight="25.0" prefWidth="112.0" text="Add to Friends" visible="false">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </Pane>
