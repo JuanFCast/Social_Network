@@ -3,6 +3,7 @@ package util;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class Vertex<T> implements Serializable{
@@ -65,6 +66,19 @@ public class Vertex<T> implements Serializable{
 				v.setColor("GRAY");
 				v.setDistance(distance() + 1);
 				v.setParent(this);
+				q.add(v);
+			}
+		}
+	}
+	
+	public void dijkstra(PriorityQueue<Vertex<T>> q) {
+		double minS = 0;
+		for (Edge ed : adj) {
+			@SuppressWarnings("unchecked")
+			Vertex<T> v = (Vertex<T>) ed.getAdj(this);
+			minS = distance() + ed.getWeight();	
+			if(minS < v.distance()) {
+				v.setDistance(minS);
 				q.add(v);
 			}
 		}

@@ -74,8 +74,8 @@ public class ProfileMenuGUI {
     		search_listView.setVisible(true);
     		
     		String s = search_txtField.getText();
-    		List<Person> contains = mainController.listContains(s);
-    		search_listView.getItems().addAll(contains);
+    		List<Person> containsOrdered = mainController.listContainsOrdered(currentProfile, mainController.listContains(s));
+    		search_listView.getItems().addAll(containsOrdered);
     	} else {
     		search_listView.setVisible(false);
     	}

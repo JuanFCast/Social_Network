@@ -13,6 +13,7 @@ import java.util.List;
 
 import util.AVL;
 import util.Graph;
+import util.Vertex;
 
 public class SocialNetwork {
 
@@ -76,6 +77,27 @@ public class SocialNetwork {
 		return l;
 	}
 	
+	public List<Person> getSearchListOrder(List<Person> l, Person p){
+		List<Person> li = new ArrayList<>();
+		network.dijkstra(network.getVertex(p));
+		List<Vertex<Person>> v = network.getVertices();
+		v.sort(new Comparator<Vertex<Person>>() {
+			@Override
+			public int compare(Vertex<Person> o1, Vertex<Person> o2) {
+				if(o1.distance() > o2.distance()) {return 1;} else if(o1.distance() < o2.distance()) {return -1;} else {return 0;}
+			}
+		});;
+		
+		for (Vertex<Person> vertex : v) {
+			if(l.contains(vertex.getElement())) {
+				li.add(vertex.getElement());
+			}
+		}
+		
+		
+		return li;
+	}
+	
 	private void loadData() throws ClassNotFoundException, IOException, Exception{
 		if(loadDataForAVL() && loadDataForGraph()) {
 			
@@ -115,7 +137,10 @@ public class SocialNetwork {
 		
 		if(fileGraph.exists()) {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileGraph));
-			network = (Graph<Person>) ois.readObject();
+			List<Vertex<Person>> l = (List<Vertex<Person>>) ois.readObject();
+			for (Vertex<Person> vertex : l) {
+				network.insertV(vertex);
+			}
 			ois.close();
 			return true;
 		}
@@ -131,7 +156,7 @@ public class SocialNetwork {
 	
 	private void saveDataForGraph() throws FileNotFoundException, IOException {
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(PATH_FOR_GRAPH));
-		oos.writeObject(network);
+		oos.writeObject(network.getVertices());
 		oos.close();
 	}
 	

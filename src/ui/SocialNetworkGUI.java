@@ -60,6 +60,10 @@ public class SocialNetworkGUI {
 		return network.getListContains(s);
 	}
 	
+	public List<Person> listContainsOrdered(Person p, List<Person> l){
+		return network.getSearchListOrder(l, p);
+	}
+	
 	public List<Person> listContacts(Person p){
 		return network.getContacts(p);
 	}
